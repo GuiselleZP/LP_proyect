@@ -1,9 +1,14 @@
-# Ejemplo 1 - diagrama_1.png
-[Link del ejemplo](https://drive.google.com/drive/folders/1qJ6oZafDHtiSlfTDWPh6AIaQrvaIWhgl?usp=sharing)
+# Ejemplo 1
+
+## Diagrama que se busca programar
+
+![Diagrama 1](./images/img_00.png){width=70%}\
+
+## Código fuente realizado
 
 ```
 t_pool = "Requerimiento Organismo de control"
-pool (t_pool):
+pool(t_pool):
 	
 	t_director = "Director"
 	t_user = "Usuario Responsable"
@@ -22,7 +27,3 @@ pool (t_pool):
 		->("Sí") task(t_send) -> event_end
 		->("No", tk.answer) 
 ```
-
-Diagrama que se busca programar:
-
-![Diagrama 1](./images/img_00.png){width=70%}\
