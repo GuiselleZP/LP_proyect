@@ -18,7 +18,7 @@ pool (t_pool):
 	@ line director(t_director)
 
 	start -> task(t_submit_info) -> task answer(t_answer)-> task(t_check)\
-	-> get(t_correct, exclusion,):
+	-> gate(t_correct, exclusion,):
 		->("Sí") task(t_send) -> event_end
 		->("No", tk.answer) 
 ```
