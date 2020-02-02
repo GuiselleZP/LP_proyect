@@ -4,3 +4,4 @@ BPMN que se encuentran en este [link](https://drive.google.com/drive/folders/1RR
 * img_00 -> ejemplo_1 - diagrama_1.png
 * img_01 -> ejemplo_2 - caso_1_c_otra_sol.png
 * img_02 -> ejemplo_5 - evaluacion.png
+* img_02 -> ejemplo_9 - example_9.png

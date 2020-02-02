@@ -19,11 +19,17 @@ pool(t_pool):
 	t_continue = "¿Candidato continúa el proceso?"
 	t_inter = "Realizar y Caificar Entrevista"
 	
-	start -> task(t_psy) -> task(t_inter) -> \
-		gate(t_continue, exclusive):
-			->("No") end end_interview
-			->("Sí") task(t_tec) -> task(t_inter) ->\
-				gate(t_continue, exclusive,):
-					->("No", ev.end_interview)
-					->("Sí") task(t_inter) -> end
+	@ line director(t_l1)
+	line applicant(t_l2):
+		ev.tec, tk.inter_2, gt.continue_2
+	line psychologist(t_l3):
+		tk.inter_3, ev.end_2
+
+	start str -> task psy(t_psy) -> task inter_1(t_inter) ->
+		gate continue_1(t_continue, exclusive):
+			->("No") end end_1
+			->("Sí") task tec(t_tec) -> task inter_2(t_inter) ->
+				gate continue_2(t_continue, exclusive,):
+					->("No", ev.end_1)
+					->("Sí") task inter_3(t_inter) -> end end_2
 ```
