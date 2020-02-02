@@ -19,11 +19,11 @@ pool(t_pool):
 	t_continue = "¿Candidato continúa el proceso?"
 	t_inter = "Realizar y Caificar Entrevista"
 	
-	@ line director(t_l1)
+	@ line psychologist(t_l3)
+	line director(t_l1):
+		tk.inter_3, end_2
 	line applicant(t_l2):
 		ev.tec, tk.inter_2, gt.continue_2
-	line psychologist(t_l3):
-		tk.inter_3, ev.end_2
 
 	start str -> task psy(t_psy) -> task inter_1(t_inter) ->
 		gate continue_1(t_continue, exclusive):
