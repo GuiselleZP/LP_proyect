@@ -1,0 +1,28 @@
+t_pool = "Realizar un evento"
+pool(t_pool):
+    t_budget = "¿Presupuesto y tiempo suficiente?"
+    t_register = "Registrar Información Evento"
+    t_sound = "Preparar sistema de sonido"
+    t_food = "Solicitar comida y bebidas"
+    t_tent = "Contratar terreno y carpa"
+    t_account = "Enviar cuenta de cobro"
+    t_license = "Gestionar Permiso"
+    t_contract = "Contratar banda"
+    t_place = "¿Lugar del evento?"
+    t_date = "Esperar feha evento"
+    t_band = "Seleccionar banda"
+    t_check = "Verificar evento"
+    t_room = "Contratar salón"
+    t_op = "Cerrado"
+    t_cl = "Abierto"
+    t_y = "Sí"
+    t_n = "No"
+
+    start -> task(t_register) -> gate(, parallel, parallel):
+        -> gate(t_place, exclusive, exclusive):
+            ->(t_cl) -> task(t_room)
+            ->(t_op) -> task(t_tent) -> task(t_license)
+        -> gate(t_budget, exclusive, exclusive):
+            ->(t_y) task(t_band) -> task(t_contract)
+            ->(t_n) task(t_sound)
+    -> task(t_food) -> timer(t_date) -> task(t_check) -> task(t_account) -> end
