@@ -6,35 +6,43 @@ a : START F? process* | //El id corresponde al evento end
     line
     ;
 
-line: LINE ID L (ID | CADENA) R DP process* a+;
+line: LINE ID L (ID | CADENA) R DP process* (elemnt P ID)* a+;
 
-v : ID E CADENA  ;
+v : ID EQ CADENA  ;
+
+elemnt: T| E |  GT ;
 
 process : TASK ID? L(ID | CADENA)? C typet? C ID? R  | event |
-    GATE ID? L d R DP arrow+;
+    GATE ID? L d R DP arrow+ process*;
 
 d : (ID | CADENA)? C  typeg? C typeg?;//La ultima es al tipo de compuerta que cierra
 
 typeg : EXC | EXCV | PLL | INC | COM ;
 typet : Basic | US | Manual | Service | Send | Recept | Script | Refer;
 
-arrow : F L(ID | CADENA) C? ID? R (process | otro*)  ;// -> (descripcion) -> processo
-otro : arrow | event;
-event: ID? END;
+arrow : F L(ID | CADENA)? C? event? R  process? ;// -> (descripcion) -> processo
+otro : process*;
+event: ID | ID? END | Timer L ID R ;
+
+C: ',';
+DP: ':';
+EQ: '=';
+F: '->';
+P: '.';
+L : '(';
+R : ')';
 
 Basic: 'basic';
 COM: 'com';
-C: ',';
-DP: ':';
+E: 'ev';
 EXC: 'exc' | 'exclusive';
 EXCV: 'excv';
-E: '=';
-F: '->';
 GATE: 'gate';
+GT: 'gt';
 INC: 'inc' | 'inclusive';
 LINE: 'line';
 Manual: 'manual';
-PLL: 'pll';
+PLL: 'pll' | 'parallel';
 POOL: 'pool';
 Send: 'send';
 Script: 'script';
@@ -42,11 +50,12 @@ Service: 'sevice';
 START: 'start';
 Recept: 'recept';
 Refer: 'refer';
+T: 'tk';
+Timer: 'timer';
 TASK: 'task';
 US: 'user';
 END: 'end';
-L : '(';
-R : ')';
+
 
 //COMMENT: '#' ~[\r\n]* -> skip;
 //INT :   [0-9]+ ;             // Define token INT as one or more digits

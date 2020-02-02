@@ -12,9 +12,9 @@ pool("Publicación de Artículos"):
     t_alw = "Siempre"
 
     start task check(t_check,,) gate(t_ok, exclusive,):
+        -> (t_rej, end)
         ->(t_cor) task(t_corrections,, check)
         ->(t_apr) gate(, inclusive, inclusive):
             ->(t_alw) task(t_write,,)
             ->(t_ill) task(t_design,,)
-                   ->task(t_layout,,) end
-        -> (t_rej, end)
+        task(t_layout,,) end
