@@ -2,24 +2,24 @@ package view;
 
 public class Gate{
 	int constant;
-	int x_i[];
-	int y_i[];
+	int coupligPoints[][] = new int[2][4];
+	int figurePoints[][] = new int[2][4];
 	TextBox tb;
 
 	public Gate(String text, int x, int y){
 		constant = 20;
-		x_i = new int[4];
-		y_i = new int[4];
 		
-		x_i[0] = x - constant;
-		x_i[1] = x;
-		x_i[2] = x + constant;
-		x_i[3] = x;
+		figurePoints[0][0] = x - constant;
+		figurePoints[0][1] = x;
+		figurePoints[0][2] = x + constant;
+		figurePoints[0][3] = x;
 
-		y_i[0] = y;
-		y_i[1] = y - constant;
-		y_i[2] = y;
-		y_i[3] = y + constant;
+		figurePoints[1][0] = y;
+		figurePoints[1][1] = y - constant;
+		figurePoints[1][2] = y;
+		figurePoints[1][3] = y + constant;
+
+		coupligPoints = figurePoints;
 
 		TextBox tb = new TextBox(text, x - 22, y + 22);
 	}

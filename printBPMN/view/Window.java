@@ -34,6 +34,12 @@ public class Window extends JFrame{
 				int[]x = {40, 60, 80, 60};
 				int[]y = {60, 40, 60, 80};
 				g.drawPolygon(x, y, 4);
+				int x_t = 60;
+				int y_t = 70;
+				int[]x1 = {x_t + 40, x_t + 40, x_t, x_t, x_t + 500, x_t + 500, x_t + 40};
+				int[]y1 = {y_t + 100, y_t, y_t, y_t + 100, y_t + 100, y_t, y_t};
+				g.drawPolygon(x1, y1, 7);
+
             }
 
         };
