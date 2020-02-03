@@ -1,19 +1,15 @@
 package view;
 
-import java.awt.*;
-import javax.swing.*;
+public class Event{
+	int x;
+	int y;
+	int diameter;
+	TextBox tb;
 
-public class Event exteds JFrame{
-	private int x;
-	private int width;
-	private int length;
-	public Event(int width, int length){
-		x = 50;
-		this.width = width;
-		this.length = length;
-	}
-
-	public void paint(Graphics g){
-		g.drawOval(x, x, width, height);
+	public Event(String text, int x, int y){
+		this.x = x;
+		this.y = y;
+		diameter = 30;
+		tb = new TextBox(text, x + 15, y + 15);
 	}
 }
