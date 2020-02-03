@@ -19,9 +19,7 @@ public class Principal{
 		
 		variables.add(temp);
 
-		
-
-		Window w = new Window(600, 400);
+		Window w = new Window(700, 400);
 		w.setVisible(true);
 	}
 }
